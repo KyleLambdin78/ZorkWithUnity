@@ -1,10 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+using Zork;
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private string ZorkGameFileAssetName = "Zork";
+    [SerializeField] private UnityOutputService Output;
+    void Awake()
+    {
+      TextAsset gameJsonAsset =  Resources.Load<TextAsset>(ZorkGameFileAssetName);
+
+
+
+        Game.Start(gameJsonAsset.text, Output);
+    }
     void Start()
     {
         
